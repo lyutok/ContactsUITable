@@ -14,6 +14,7 @@ class ContactsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.rowHeight = 50
     }
     
     // MARK: - Table view data source
