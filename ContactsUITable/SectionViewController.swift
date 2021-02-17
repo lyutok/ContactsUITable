@@ -8,6 +8,8 @@
 import UIKit
 
 class SectionViewController: UITableViewController {
+    
+    var personList = Person.getPersonsList()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,19 +20,30 @@ class SectionViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 10
+       
+        return personList.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        
+        return 2
     }
-
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let person = personList[section]
+        return "\(person.name) \(person.surname)"
+    }
  
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      
         let cell = tableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath)
+        let person = personList[indexPath.row]
+        var content = cell.defaultContentConfiguration()
+    
+        content.text = person.phoneNumber
 
+        cell.contentConfiguration = content
 
         return cell
     }
