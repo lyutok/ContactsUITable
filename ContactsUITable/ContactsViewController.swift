@@ -57,20 +57,7 @@ class ContactsViewController: UITableViewController {
         guard let indexPath = tableView.indexPathForSelectedRow else {return}
         let person = personList[indexPath.row]
         contactDetailsVC.person = person
-    
-        }
+        
+    }
     
 }
-
-/*
- let tabBarController = segue.destination as! UITabBarController
- guard let tbVC = tabBarController.viewControllers else { return }
- for viewController in tbVC {
-     if let welcomeVC = viewController as? WelcomeViewController {
-         welcomeVC.user = user
-     } else if let emailVC = viewController as? EmailViewController {
-         emailVC.user = user
-     } else if let _ = viewController as? MoreInfoViewController {
-     }
- }
- */
