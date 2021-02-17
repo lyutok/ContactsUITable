@@ -15,6 +15,7 @@ class ContactsViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.rowHeight = 50
+        navigationItem.leftBarButtonItem = editButtonItem
     }
     
     // MARK: - Table view data source
@@ -34,9 +35,18 @@ class ContactsViewController: UITableViewController {
         cell.contentConfiguration = content
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        
+    //shuffle rows
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let currentContact = personList.remove(at: sourceIndexPath.row)
+        personList.insert(currentContact, at: destinationIndexPath.row)
+    }
+    //delete red buttons
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .none
+    }
+    //delete blank left space
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        false
     }
     
     // MARK: - Navigation
